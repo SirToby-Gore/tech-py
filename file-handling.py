@@ -71,7 +71,7 @@ def pick_example() -> None:
 
     pickle_write(person)
 
-    pickle_read(person)
+    pickle_read()
 
 
 # -----
@@ -91,9 +91,8 @@ def json_write(object: iter, path: str = "data.json") -> None:
 
     with open(path, 'w') as f:
         f.write(
-            json.dump(
-                object,
-                f
+            json.dumps(
+                object
             )
         )
 
@@ -108,7 +107,7 @@ def json_read(path: str = "data.json") -> iter:
     import json
 
     with open(path, 'r') as f:
-        return json.load(f)
+        return json.loads(''.join(f.readlines()))
 
 def json_example() -> None:
     '''
@@ -274,6 +273,8 @@ def main() -> None:
     json_example()
 
     writing_to_files()
+
+    csv_example()
 
 if __name__ == "__main__":
     main()
