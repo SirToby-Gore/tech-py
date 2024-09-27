@@ -1,3 +1,10 @@
+
+
+# -----
+# below here is how to use pickle
+# -----
+
+
 def pickle_write(object: any, path: str = "data.pickle") -> None:
     '''
     > this allows one to save any object to a .pickle file
@@ -151,10 +158,122 @@ def json_example() -> None:
 
     json_write(players)
 
+
+# -----
+# below here is how to use txt
+# -----
+
+
+def write(data: str, path: str = "data.txt") -> None:
+    '''
+    > this all allows one to save any object to a .txt file
+    '''
+
+    if not path.endswith('.txt'):
+        raise ValueError('path must be a .txt file')
+
+    with open(path, 'w') as f:
+        f.write(data)
+
+def read(path: str = "data.txt") -> str:
+    '''
+    > takes in a .txt path and returns a str
+    '''
+
+    if not path.endswith('.txt'):
+        raise ValueError('path must be a .txt file')
+
+    with open(path, 'r') as f:
+        return f.read()
+
+def writing_to_files() -> None:
+    '''
+    ## This is an example on writing to files
+
+    I will show you how to use json to save and load objects
+
+    The above functions will show you how to save and load objects
+
+    The below code will only show how to use those functions
+
+    ## Why use txt?
+
+    * txt is a format for storing and transporting data
+    * It is a human readable format
+    * It is a lightweight format
+    '''
+
+    write('hello world')
+
+    print(read())
+
+
+# -----
+# below here is how to use csv
+# -----
+
+
+def write_csv(data: list[list[any]], path: str = "data.csv") -> None:
+    '''
+    > this all allows one to save any object to a .csv file
+    '''
+
+    if not path.endswith('.csv'):
+        raise ValueError('path must be a .csv file')
+    
+    import csv
+
+    with open(path, 'w') as f:
+        csv.writer(f).writerows(data)
+
+def read_csv(path: str = "data.csv") -> list[list[any]]:
+    '''
+    > takes in a .csv path and returns a list
+    '''
+
+    if not path.endswith('.csv'):
+        raise ValueError('path must be a .csv file')
+    
+    import csv
+
+    with open(path, 'r') as f:
+        return list(csv.reader(f))
+    
+def csv_example() -> None:
+    '''
+    ## This is an example on csv
+
+    I will show you how to use csv to save and load objects
+
+    The above functions will show you how to save and load objects
+
+    The below code will only show how to use those functions
+
+    ## Why use csv?
+
+    * csv is a format for storing and transporting data
+    * it is also widley used in day to day applications
+    '''
+
+    players = [
+        ['name', 'play-time', 'level', 'coins'],
+        ['john', 10, 30, 472],
+        ['jane', 37, 54, 999],
+        ['bob', 56, 80, 2100],
+        ['alice', 19, 23, 450],
+    ]
+
+    write_csv(players)
+
+    print(read_csv())
+
+
 def main() -> None:
     pick_example()
 
     json_example()
+
+    writing_to_files()
 
 if __name__ == "__main__":
     main()
