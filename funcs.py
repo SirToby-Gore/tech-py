@@ -26,7 +26,7 @@ def function_args(*args) -> None:
     for arg in args:
         print(arg)
 
-def function_kwags(**kwargs) -> None:
+def function_kwargs(**kwargs) -> None:
     '''
     > The double ** allows you to pass in kwargs(key word arguments)
     
@@ -67,7 +67,7 @@ def function_kwags(**kwargs) -> None:
 
 def function_positional(arg1, arg2, /, kwargs) -> None:
     '''
-    > using a slash makes anything that comes before it have to be passed positionaly
+    > using a slash makes anything that comes before it have to be passed positionally
 
     this will cause an error
     ```
@@ -82,3 +82,13 @@ def function_positional(arg1, arg2, /, kwargs) -> None:
     function_positional(6, 2, **kwargs)
     ```
     '''
+
+def function_recursion(i: int) -> int:
+    '''
+    > this function returns the sum of every number of itself and
+    every number below itself
+    '''
+    if i > 1:
+        return function_recursion(i-1) + i
+    else: 
+        return i
